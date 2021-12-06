@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/han/42/42cursus/1_circle/ft_printf/clion_ft_printf/ft_printf.c
+ft_printf.h
+/home/han/42/42cursus/1_circle/ft_printf/clion_ft_printf/ft_printf.h
+
+/home/han/42/42cursus/1_circle/ft_printf/clion_ft_printf/ft_printf.h
+unistd.h
+-
+stdarg.h
+-
+stdlib.h
+-
+
+/home/han/42/42cursus/1_circle/ft_printf/clion_ft_printf/main.c
+ft_printf.h
+/home/han/42/42cursus/1_circle/ft_printf/clion_ft_printf/ft_printf.h
+stdio.h
+-
+

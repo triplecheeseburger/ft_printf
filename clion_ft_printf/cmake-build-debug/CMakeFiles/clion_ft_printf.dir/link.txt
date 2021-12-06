@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/clion_ft_printf.dir/ft_printf.c.o CMakeFiles/clion_ft_printf.dir/main.c.o -o clion_ft_printf 
