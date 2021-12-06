@@ -6,7 +6,7 @@
 #    By: hakim <hakim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/19 19:37:01 by hakim             #+#    #+#              #
-#    Updated: 2021/12/06 23:30:41 by hakim            ###   ########.fr        #
+#    Updated: 2021/12/06 23:40:45 by hakim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,11 @@ OBJ = $(SRC:.c=.o)
 #OBJ_BONUS = $(SRC_BONUS:.c=.o)
 NAME = libftprintf.a
 
-#ifdef BONUS
-#	OBJS = $(OBJ) $(OBJ_BONUS)
-#else
-#	OBJS = $(OBJ)
-#endif
+ifdef BONUS
+	OBJS = $(OBJ) $(OBJ_BONUS)
+else
+	OBJS = $(OBJ)
+endif
 
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)

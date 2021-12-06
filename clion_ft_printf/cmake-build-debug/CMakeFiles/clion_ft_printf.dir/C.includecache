@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/han/42/42cursus/1_circle/ft_printf/clion_ft_printf/ft_printf.c
-ft_printf.h
-/home/han/42/42cursus/1_circle/ft_printf/clion_ft_printf/ft_printf.h
-
 /home/han/42/42cursus/1_circle/ft_printf/clion_ft_printf/ft_printf.h
 unistd.h
 -
@@ -22,5 +18,7 @@ stdlib.h
 ft_printf.h
 /home/han/42/42cursus/1_circle/ft_printf/clion_ft_printf/ft_printf.h
 stdio.h
+-
+limits.h
 -
 

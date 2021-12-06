@@ -6,7 +6,7 @@
 /*   By: hakim <hakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 17:17:19 by hakim             #+#    #+#             */
-/*   Updated: 2021/12/06 23:29:41 by hakim            ###   ########.fr       */
+/*   Updated: 2021/12/07 00:08:46 by hakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,9 @@ int	f_proc(const char *format, int *index, va_list ap)
 	int	count;
 
 	func_init(func);
-	// if format[index + 1] is func;;;;;;
 	count = func[(int)format[*index + 1]](ap);
 	*index += 2;
-	return(count);
+	return (count);
 }
 
 void	func_init(int (*func[])(va_list))
@@ -56,7 +55,7 @@ void	func_init(int (*func[])(va_list))
 	func['u'] = write_u;
 	func['x'] = write_x;
 	func['X'] = write_X;
-	func['%'] = write_5; 
+	func['%'] = write_5;
 }
 
 int	write_c(va_list ap)
@@ -75,6 +74,8 @@ int	write_s(va_list ap)
 
 	index = 0;
 	s = va_arg(ap, char *);
+	if (s == 0)
+		return (0);
 	while (s[index] != '\0')
 		write(1, &s[index++], 1);
 	return (index);
@@ -82,16 +83,16 @@ int	write_s(va_list ap)
 
 int	write_p(va_list ap)
 {
-	long long	ptr;
+	unsigned long long	ptr;
 	int			index;
 	int			count;
 	char		toprint[16];
 
-	ptr = va_arg(ap, long long);
+	ptr = va_arg(ap, unsigned long long);
 	index = 15;
 	while (index >= 0)
 	{
-		toprint[index] = "0123456789abcdef"[ptr % 16];
+		toprint[index] = "0123456789abcdef"[ft_abs(ptr % 16)];
 		ptr /= 16;
 		--index;
 	}
@@ -107,6 +108,13 @@ int	write_p(va_list ap)
 	while (index < 16 && ++count)
 		write(1, &toprint[index++], 1);
 	return (count);
+}
+
+int	ft_abs(long long n)
+{
+	if (n < 0)
+		return (-n);
+	return (n);
 }
 
 int	write_d(va_list ap)
@@ -233,6 +241,8 @@ int	ft_putX(unsigned int u)
 
 int write_5(va_list ap)
 {
+	if (ap)
+		write(1, "", 0);
 	write(1, "%", 1);
 	return (1);
 }

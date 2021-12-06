@@ -6,7 +6,7 @@
 /*   By: hakim <hakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 15:34:54 by hakim             #+#    #+#             */
-/*   Updated: 2021/12/06 23:29:49 by hakim            ###   ########.fr       */
+/*   Updated: 2021/12/07 00:02:39 by hakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		write_u(va_list ap);
 int		write_x(va_list ap);
 int		write_X(va_list ap);
 int		write_5(va_list ap);
+int		ft_abs(long long n);
 int		ft_putnbr(int n);
 int		ft_putui(unsigned int u);
 int		ft_putx(unsigned int u);
