@@ -6,25 +6,20 @@
 #    By: hakim <hakim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/19 19:37:01 by hakim             #+#    #+#              #
-#    Updated: 2021/12/06 23:40:45 by hakim            ###   ########.fr        #
+#    Updated: 2021/12/07 00:38:44 by hakim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-SRC =	ft_printf.c 
-#SRC_BONUS = 
-OBJ = $(SRC:.c=.o)
-#OBJ_BONUS = $(SRC_BONUS:.c=.o)
+SRCS =	ft_printf.c \
+		format_csp5.c \
+		format_du.c \
+		format_x0.c
+OBJS = $(SRCS:%.c=%.o)
 NAME = libftprintf.a
 
-ifdef BONUS
-	OBJS = $(OBJ) $(OBJ_BONUS)
-else
-	OBJS = $(OBJ)
-endif
-
-.c.o:
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 all: $(NAME)
@@ -32,15 +27,12 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-#bonus:
-#	@make BONUS=1 all
-
 clean:
-	rm -f $(OBJ) #$(OBJ_BONUS)
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: fclean all clean re bonus
+.PHONY: fclean all clean re
