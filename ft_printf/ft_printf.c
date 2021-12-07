@@ -6,7 +6,7 @@
 /*   By: hakim <hakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 17:17:19 by hakim             #+#    #+#             */
-/*   Updated: 2021/12/07 16:51:21 by hakim            ###   ########.fr       */
+/*   Updated: 2021/12/07 19:48:39 by hakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,9 @@ int	f_proc(const char *format, int *index, va_list ap, int (*func[])(va_list))
 {
 	int	count;
 
-	count = func[(int)format[*index + 1]](ap);
-	*index += 2;
+	*index += find_conv(&format[*index]);
+	count = func[(int)format[*index]](ap);
+	++*index;
 	return (count);
 }
 
@@ -56,4 +57,23 @@ void	func_init(int (*func[])(va_list))
 	func['x'] = write_x;
 	func['X'] = write_0;
 	func['%'] = write_5;
+}
+
+int	find_conv(const char *format)
+{
+	char	*conv;
+	int		index;
+	int		cndex;
+
+	index = 1;
+	conv = "cspdiuxX%";
+	while (format[index] != '\0')
+	{
+		cndex = 0;
+		while (conv[cndex] != '\0')
+			if (format[index] == conv[cndex++])
+				return (index);
+		++index;
+	}
+	return (0);
 }

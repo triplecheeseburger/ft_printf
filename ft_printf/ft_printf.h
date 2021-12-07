@@ -6,7 +6,7 @@
 /*   By: hakim <hakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 15:34:54 by hakim             #+#    #+#             */
-/*   Updated: 2021/12/07 16:56:49 by hakim            ###   ########.fr       */
+/*   Updated: 2021/12/07 19:49:35 by hakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 int		ft_printf(const char *format, ...);
 int		f_proc(const char *format, int *index, va_list ap,
 			int (*func[])(va_list));
+int		find_conv(const char *format);
 int		write_c(va_list ap);
 int		write_s(va_list	ap);
 int		write_p(va_list ap);
