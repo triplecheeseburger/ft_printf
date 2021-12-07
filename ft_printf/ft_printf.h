@@ -6,7 +6,7 @@
 /*   By: hakim <hakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 15:34:54 by hakim             #+#    #+#             */
-/*   Updated: 2021/12/07 16:52:23 by hakim            ###   ########.fr       */
+/*   Updated: 2021/12/07 16:56:49 by hakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdarg.h>
-# include <stdlib.h>
 
 int		ft_printf(const char *format, ...);
 int		f_proc(const char *format, int *index, va_list ap,
@@ -28,7 +27,6 @@ int		write_u(va_list ap);
 int		write_x(va_list ap);
 int		write_0(va_list ap);
 int		write_5(va_list ap);
-int		ft_abs(long long n);
 int		ft_putnbr(int n);
 int		ft_putui(unsigned int u);
 int		ft_putx(unsigned int u);
