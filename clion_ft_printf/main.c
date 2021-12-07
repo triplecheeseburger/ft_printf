@@ -16,16 +16,9 @@
 
 int	main(void)
 {
-    int  a;
-    long long b;
-    unsigned int u;
+    int a;
 
-    u = 2147483647 * 2 + 1;
-    a = 2147483647;
-	printf("%d\n", ft_printf("%p\n", NULL));
-    printf("\n\n");
-    printf("%d\n", printf("%p\n", NULL));
-//    printf("%d\n", ft_printf("%s\n%p\n%d\n%i\n%u\n%x\n%X\n%%\n%p\n%p\n%p\n%p\n", "hello world!", &b, a, a, u, a, a, LONG_MIN, LONG_MAX, ULONG_MAX, -ULONG_MAX));
-//    printf("\n\n");
-//    printf("%d\n", printf("%s\n%p\n%d\n%i\n%u\n%x\n%X\n%%\n%p\n%p\n%p\n%p\n", "hello world!", &b, a, a, u, a, a, LONG_MIN, LONG_MAX, ULONG_MAX, -ULONG_MAX));
+    ft_printf("%p\n%p\n%p\n%p\n", "1", "1234", 0, 2147483649);
+    ft_printf("\n\n");
+    printf("%p\n%p\n%p\n%p\n", "1", "1234", 0, 2147483649);
 }
