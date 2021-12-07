@@ -6,7 +6,7 @@
 /*   By: hakim <hakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 00:36:30 by hakim             #+#    #+#             */
-/*   Updated: 2021/12/07 00:36:48 by hakim            ###   ########.fr       */
+/*   Updated: 2021/12/07 13:28:44 by hakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -64,7 +64,7 @@ int	ft_putui(unsigned int u)
 	int		count;
 
 	count = 0;
-	i = 10;	
+	i = 10;
 	if (u == 0 && ++count)
 		write(1, "0", 1);
 	while (u)
@@ -76,4 +76,3 @@ int	ft_putui(unsigned int u)
 	write(1, &a[i], 10 - i);
 	return (count);
 }
-

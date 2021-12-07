@@ -6,7 +6,7 @@
 /*   By: hakim <hakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 00:37:22 by hakim             #+#    #+#             */
-/*   Updated: 2021/12/07 00:37:38 by hakim            ###   ########.fr       */
+/*   Updated: 2021/12/07 13:29:11 by hakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_putx(unsigned int u)
 	int		count;
 
 	count = 0;
-	i = 8;	
+	i = 8;
 	if (u == 0 && ++count)
 		write(1, "0", 1);
 	while (u)
@@ -55,7 +55,7 @@ int	ft_put0(unsigned int u)
 	int		count;
 
 	count = 0;
-	i = 8;	
+	i = 8;
 	if (u == 0 && ++count)
 		write(1, "0", 1);
 	while (u)

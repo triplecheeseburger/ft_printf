@@ -6,7 +6,7 @@
 /*   By: hakim <hakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 00:35:12 by hakim             #+#    #+#             */
-/*   Updated: 2021/12/07 13:17:07 by hakim            ###   ########.fr       */
+/*   Updated: 2021/12/07 13:27:55 by hakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	write_p(va_list ap)
 	return (count);
 }
 
-int write_5(va_list ap)
+int	write_5(va_list ap)
 {
 	if (ap)
 		write(1, "", 0);
