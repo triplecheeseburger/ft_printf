@@ -6,7 +6,7 @@
 /*   By: hakim <hakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 15:34:54 by hakim             #+#    #+#             */
-/*   Updated: 2021/12/07 00:02:39 by hakim            ###   ########.fr       */
+/*   Updated: 2021/12/07 00:38:59 by hakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ int		write_p(va_list ap);
 int		write_d(va_list ap);
 int		write_u(va_list ap);
 int		write_x(va_list ap);
-int		write_X(va_list ap);
+int		write_0(va_list ap);
 int		write_5(va_list ap);
 int		ft_abs(long long n);
 int		ft_putnbr(int n);
 int		ft_putui(unsigned int u);
 int		ft_putx(unsigned int u);
-int		ft_putX(unsigned int u);
+int		ft_put0(unsigned int u);
 void	func_init(int (*func[])(va_list));
 
 #endif

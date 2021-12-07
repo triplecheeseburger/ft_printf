@@ -1,4 +1,4 @@
-/home/han/clion-2021.2.3/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /home/han/42/42cursus/1_circle/ft_printf/clion_ft_printf
+/private/var/folders/zz/zyxvpxvq6csfxvn_n000clmh0034x4/T/AppTranslocation/38BA45CF-CF05-478A-8C1F-F514C468CE8E/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/hakim/ft_printf/clion_ft_printf
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/han/42/42cursus/1_circle/ft_printf/clion_ft_printf/cmake-build-debug
+-- Build files have been written to: /Users/hakim/ft_printf/clion_ft_printf/cmake-build-debug

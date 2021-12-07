@@ -8,4 +8,7 @@ include_directories(.)
 add_executable(clion_ft_printf
         ft_printf.c
         ft_printf.h
+        format_csp5.c
+        format_du.c
+        format_x0.c
         main.c)

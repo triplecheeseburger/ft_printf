@@ -4,22 +4,15 @@ set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
 
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "C"
-  )
-# The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_C
-  "/home/han/42/42cursus/1_circle/ft_printf/clion_ft_printf/ft_printf.c" "/home/han/42/42cursus/1_circle/ft_printf/clion_ft_printf/cmake-build-debug/CMakeFiles/clion_ft_printf.dir/ft_printf.c.o"
-  "/home/han/42/42cursus/1_circle/ft_printf/clion_ft_printf/main.c" "/home/han/42/42cursus/1_circle/ft_printf/clion_ft_printf/cmake-build-debug/CMakeFiles/clion_ft_printf.dir/main.c.o"
-  )
-set(CMAKE_C_COMPILER_ID "GNU")
-
-# The include file search paths:
-set(CMAKE_C_TARGET_INCLUDE_PATH
-  "../."
   )
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/hakim/ft_printf/clion_ft_printf/format_csp5.c" "CMakeFiles/clion_ft_printf.dir/format_csp5.c.o" "gcc" "CMakeFiles/clion_ft_printf.dir/format_csp5.c.o.d"
+  "/Users/hakim/ft_printf/clion_ft_printf/format_du.c" "CMakeFiles/clion_ft_printf.dir/format_du.c.o" "gcc" "CMakeFiles/clion_ft_printf.dir/format_du.c.o.d"
+  "/Users/hakim/ft_printf/clion_ft_printf/format_x0.c" "CMakeFiles/clion_ft_printf.dir/format_x0.c.o" "gcc" "CMakeFiles/clion_ft_printf.dir/format_x0.c.o.d"
+  "/Users/hakim/ft_printf/clion_ft_printf/ft_printf.c" "CMakeFiles/clion_ft_printf.dir/ft_printf.c.o" "gcc" "CMakeFiles/clion_ft_printf.dir/ft_printf.c.o.d"
+  "/Users/hakim/ft_printf/clion_ft_printf/main.c" "CMakeFiles/clion_ft_printf.dir/main.c.o" "gcc" "CMakeFiles/clion_ft_printf.dir/main.c.o.d"
   )
 
 # Targets to which this target links.
