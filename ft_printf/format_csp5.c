@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	write_c(va_list ap)
+int	write_c(const char *format, va_list ap)
 {
 	char	c;
 
@@ -20,7 +20,7 @@ int	write_c(va_list ap)
 	return (write(1, &c, 1));
 }
 
-int	write_s(va_list ap)
+int	write_s(const char *format, va_list ap)
 {
 	char	*s;
 	int		index;
@@ -34,7 +34,7 @@ int	write_s(va_list ap)
 	return (index);
 }
 
-int	write_p(va_list ap)
+int	write_p(const char *format, va_list ap)
 {
 	unsigned long long	ptr;
 	int					index;
@@ -42,6 +42,7 @@ int	write_p(va_list ap)
 	char				toprint[16];
 
 	ptr = va_arg(ap, long long);
+	proc_sign(format);
 	index = 15;
 	while (index >= 0)
 	{
@@ -60,9 +61,9 @@ int	write_p(va_list ap)
 	return (count);
 }
 
-int	write_5(va_list ap)
+int	write_5(const char *format, va_list ap)
 {
-	if (ap)
+	if (format || ap)
 		write(1, "", 0);
 	return (write(1, "%", 1));
 }

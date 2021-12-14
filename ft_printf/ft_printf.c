@@ -36,17 +36,17 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
-int	f_proc(const char *format, int *index, va_list ap, int (*func[])(va_list))
+int	f_proc(const char *format, int *index, va_list ap, int (*func[])(const char *, va_list))
 {
-	int	count;
+	int to_add;
 
-	*index += find_conv(&format[*index]);
-	count = func[(int)format[*index]](ap);
-	++*index;
+	to_add = find_conv(&format[*index]);
+	count = func[(int)format[*index + to_add]](format, ap);
+	*index += to_add + 1;
 	return (count);
 }
 
-void	func_init(int (*func[])(va_list))
+void	func_init(int (*func[])(const char *, va_list))
 {
 	func['c'] = write_c;
 	func['s'] = write_s;

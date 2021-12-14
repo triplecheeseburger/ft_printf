@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   bonus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakim <hakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 18:04:34 by hakim             #+#    #+#             */
-/*   Updated: 2021/12/06 18:05:21 by hakim            ###   ########.fr       */
+/*   Created: 2021/12/14 21:21:32 by hakim             #+#    #+#             */
+/*   Updated: 2021/12/14 21:21:36 by hakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-#include <limits.h>
 
-int	main(void)
+# define SHARP 0
+# define PLUS 1
+# define SPACE 2
+
+int proc_sign(const char *format)
 {
-    int a;
+	int	flags[3];
+	int conv;
+	int index;
 
-    ft_printf("%p\n%p\n%p\n%p\n", "1", "1234", 0, 2147483649);
-    ft_printf("\n\n");
-    printf("%p\n%p\n%p\n%p\n", "1", "1234", 0, 2147483649);
-
-	if (a > b)
+	index = 0;
+	conv = find_conv(format);
+	while (index < 3)
+		flags[index++] = 0;
+	index = 0;
+	while (index < conv)
 	{
-
+		if (format[index] == '#')
+			flags[SHARP] = 1;
+		if (format[index] == '+')
+			flags[PLUS] = 1;
+		if (format[index] == ' ')
+			flags[SPACE] = 1;
+		++index;
 	}
+
 }

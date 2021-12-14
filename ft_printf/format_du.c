@@ -11,11 +11,12 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	write_d(va_list ap)
+int	write_d(const char *format, va_list ap)
 {
 	int	d;
 
 	d = va_arg(ap, int);
+	proc_sign(format);
 	if (d == -2147483648)
 	{
 		write(1, "-2147483648", 11);
@@ -49,11 +50,12 @@ int	ft_putnbr(int n)
 	return (count);
 }
 
-int	write_u(va_list ap)
+int	write_u(const char *format, va_list ap)
 {
 	unsigned int	u;
 
 	u = va_arg(ap, int);
+	proc_sign(format);
 	return (ft_putui(u));
 }
 
