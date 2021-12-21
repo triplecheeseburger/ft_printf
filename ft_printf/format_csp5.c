@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	write_c(const char *format, va_list ap)
+int	write_c(const char *format, va_list ap, t_options options)
 {
 	char	c;
 
@@ -20,7 +20,7 @@ int	write_c(const char *format, va_list ap)
 	return (write(1, &c, 1));
 }
 
-int	write_s(const char *format, va_list ap)
+int	write_s(const char *format, va_list ap, t_options options)
 {
 	char	*s;
 	int		index;
@@ -34,7 +34,7 @@ int	write_s(const char *format, va_list ap)
 	return (index);
 }
 
-int	write_p(const char *format, va_list ap)
+int	write_p(const char *format, va_list ap, t_options options)
 {
 	unsigned long long	ptr;
 	int					index;
@@ -61,9 +61,9 @@ int	write_p(const char *format, va_list ap)
 	return (count);
 }
 
-int	write_5(const char *format, va_list ap)
+int	write_5(const char *format, va_list ap, t_options options)
 {
-	if (format || ap)
+	if (format || ap || options)
 		write(1, "", 0);
 	return (write(1, "%", 1));
 }

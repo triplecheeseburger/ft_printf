@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	write_d(const char *format, va_list ap)
+int	write_d(const char *format, va_list ap, t_options options)
 {
 	int	d;
 
@@ -50,7 +50,7 @@ int	ft_putnbr(int n)
 	return (count);
 }
 
-int	write_u(const char *format, va_list ap)
+int	write_u(const char *format, va_list ap, t_options options)
 {
 	unsigned int	u;
 

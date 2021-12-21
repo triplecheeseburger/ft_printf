@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	write_x(const char *format, va_list ap)
+int	write_x(const char *format, va_list ap, t_options options)
 {
 	unsigned int	u;
 
@@ -41,7 +41,7 @@ int	ft_putx(unsigned int u)
 	return (count);
 }
 
-int	write_0(const char *format, va_list ap)
+int	write_0(const char *format, va_list ap, t_options options)
 {
 	unsigned int	u;
 

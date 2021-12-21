@@ -38,42 +38,21 @@ int	ft_printf(const char *format, ...)
 
 int	f_proc(const char *format, int *index, va_list ap, int (*func[])(const char *, va_list))
 {
-	int to_add;
+	t_options	options;
+	int 		conv;
+	int			count;
+	int 		opdex;
 
-	to_add = find_conv(&format[*index]);
-	count = func[(int)format[*index + to_add]](format, ap);
-	*index += to_add + 1;
+	conv = *index + find_conv(&format[*index]);
+	options_init(options);
+	opdex = -1;
+	while (++opdex < conv && is_flag(&format[++*index]))
+		options.flags[(int)format[*index]] = 1;
+	options.width = ft_atoi(&format[*index++]);
+	if (format[*index++] == '.')
+		options.flags['.'] = 1;
+	options.precision = ft_atoi(&format[*index]);
+	count = func[(int)format[conv]](format, ap, options); // have to pass options
+	*index = conv + 1;
 	return (count);
-}
-
-void	func_init(int (*func[])(const char *, va_list))
-{
-	func['c'] = write_c;
-	func['s'] = write_s;
-	func['p'] = write_p;
-	func['d'] = write_d;
-	func['i'] = write_d;
-	func['u'] = write_u;
-	func['x'] = write_x;
-	func['X'] = write_0;
-	func['%'] = write_5;
-}
-
-int	find_conv(const char *format)
-{
-	char	*conv;
-	int		index;
-	int		cndex;
-
-	index = 1;
-	conv = "cspdiuxX%";
-	while (format[index] != '\0')
-	{
-		cndex = 0;
-		while (conv[cndex] != '\0')
-			if (format[index] == conv[cndex++])
-				return (index);
-		++index;
-	}
-	return (0);
 }
