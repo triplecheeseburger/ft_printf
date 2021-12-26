@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakim <hakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/19 11:13:04 by hakim             #+#    #+#             */
-/*   Updated: 2021/11/08 09:03:41 by hakim            ###   ########.fr       */
+/*   Created: 2021/12/06 18:04:34 by hakim             #+#    #+#             */
+/*   Updated: 2021/12/06 18:05:21 by hakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
+#include <limits.h>
 
-void	ft_bzero(void *s, size_t n)
+int	main(void)
 {
-	unsigned char	*ptr;
-
-	ptr = s;
-	while (n--)
-	{
-		*ptr = 0;
-		ptr++;
-	}
+	ft_printf("%#015.15p\n%-+0#p", "1", "2");
+	ft_printf("\n\n");
 }

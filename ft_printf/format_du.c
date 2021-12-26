@@ -11,18 +11,15 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	write_d(const char *format, va_list ap, t_options options)
+int	write_d(va_list ap, t_options options)
 {
 	int	d;
+	int	count;
 
 	d = va_arg(ap, int);
-	proc_sign(format);
-	if (d == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		return (11);
-	}
-	return (ft_putnbr(d));
+	count = proc_sign_dp(d >= 0, options);
+	count += ft_putnbr(d);
+	return (count);
 }
 
 int	ft_putnbr(int n)
@@ -33,6 +30,8 @@ int	ft_putnbr(int n)
 
 	count = 0;
 	i = 10;
+	if (n == -2147483648)
+		return (write(1, "-2147483648", 11));
 	if (n < 0 && ++count)
 	{
 		write(1, "-", 1);
@@ -50,12 +49,13 @@ int	ft_putnbr(int n)
 	return (count);
 }
 
-int	write_u(const char *format, va_list ap, t_options options)
+int	write_u(va_list ap, t_options options)
 {
 	unsigned int	u;
 
+	if (&options)
+		write(1, "", 0);
 	u = va_arg(ap, int);
-	proc_sign(format);
 	return (ft_putui(u));
 }
 

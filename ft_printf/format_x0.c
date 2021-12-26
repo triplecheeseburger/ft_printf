@@ -12,12 +12,11 @@
 
 #include "ft_printf.h"
 
-int	write_x(const char *format, va_list ap, t_options options)
+int	write_x(va_list ap, t_options options)
 {
 	unsigned int	u;
 
 	u = va_arg(ap, int);
-	proc_sign(format);
 	return (ft_putx(u));
 }
 
@@ -41,12 +40,11 @@ int	ft_putx(unsigned int u)
 	return (count);
 }
 
-int	write_0(const char *format, va_list ap, t_options options)
+int	write_0(va_list ap, t_options options)
 {
 	unsigned int	u;
 
 	u = va_arg(ap, int);
-	proc_sign(format);
 	return (ft_put0(u));
 }
 

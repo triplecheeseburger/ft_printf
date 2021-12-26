@@ -37,12 +37,48 @@ t_bool	is_flag(const char *format)
 	int		index;
 
 	index = 0;
-	flags = "# +-0.";
-	while (index < 6)
+	flags = "# +-0";
+	while (index < 5)
 	{
 		if (*format == flags[index])
 			return (1);
 		++index;
 	}
 	return (0);
+}
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	count;
+
+	count = 0;
+	while (str[count] != '\0')
+		count++;
+	return (count);
+}
+
+int	ft_atoi(const char *str, int *outdex)
+{
+	unsigned long long	result;
+	int					plma;
+	int					index;
+
+	index = 0;
+	plma = 1;
+	if (str[index] == '-')
+		plma = -1;
+	if (str[index] == '-' || str[index] == '+')
+		index++;
+	result = 0;
+	while (str[index] >= '0' && str[index] <= '9')
+	{
+		result = result * 10 + str[index] - '0';
+		index++;
+	}
+	*outdex += index;
+	if (result > 9223372036854775807 && plma == 1)
+		return (-1);
+	else if (result > 9223372036854775808ULL && plma == -1)
+		return (0);
+	return ((int)result * plma);
 }

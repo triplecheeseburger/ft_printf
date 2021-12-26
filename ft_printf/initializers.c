@@ -12,14 +12,18 @@
 
 #include "ft_printf.h"
 
-void	options_init(t_options options)
+void	options_init(t_options *options)
 {
-	ft_bzero(options.flags, 128);
-	options.precision = 0;
-	options.width = 0;
+	options->flags['#'] = FALSE;
+	options->flags[' '] = FALSE;
+	options->flags['+'] = FALSE;
+	options->flags['-'] = FALSE;
+	options->flags['0'] = FALSE;
+	options->precision = FALSE;
+	options->width = FALSE;
 }
 
-void	func_init(int (*func[])(const char *, va_list))
+void	func_init(int (*func[])(va_list, t_options))
 {
 	func['c'] = write_c;
 	func['s'] = write_s;
