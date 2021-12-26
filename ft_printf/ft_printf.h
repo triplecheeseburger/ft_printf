@@ -19,8 +19,8 @@
 # define TRUE 1
 # define FALSE -1
 
-typedef char t_bool;
-typedef struct	s_options
+typedef char	t_bool;
+typedef struct s_options
 {
 	t_bool	flags[49];
 	int		precision;
@@ -29,7 +29,7 @@ typedef struct	s_options
 
 int		ft_printf(const char *format, ...);
 int		f_proc(const char *format, int *index, va_list ap,
-				int (*func[])(va_list, t_options));
+			int (*func[])(va_list, t_options));
 int		find_conv(const char *format);
 int		write_c(va_list ap, t_options options);
 int		write_s(va_list	ap, t_options options);
@@ -47,7 +47,6 @@ int		ft_putui(unsigned int u);
 int		ft_putx(unsigned int u);
 int		ft_put0(unsigned int u);
 int		ft_atoi(const char *str, int *outdex);
-void	ft_bzero(void *s, size_t n);
 void	func_init(int (*func[])(va_list, t_options));
 void	options_init(t_options *options);
 t_bool	is_flag(const char *format);
