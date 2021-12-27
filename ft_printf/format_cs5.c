@@ -38,7 +38,7 @@ int	write_s(va_list ap, t_options options)
 {
 	char	*s;
 	int		count;
-	size_t	toprint;
+	int		toprint;
 
 	count = 0;
 	s = va_arg(ap, char *);
@@ -62,17 +62,17 @@ int	write_s(va_list ap, t_options options)
 	return (count);
 }
 
-size_t	set_toprint(t_options options, char *s)
+int	set_toprint(t_options options, char *s)
 {
 	if (options.precision == FALSE)
-		return (ft_strlen(s));
+		return ((int)ft_strlen(s));
 	else
 		return (options.precision);
 }
 
 int	write_5(va_list ap, t_options options)
 {
-	if (ap || &options)
+	if (ap || options.width)
 		write(1, "", 0);
 	return (write(1, "%", 1));
 }

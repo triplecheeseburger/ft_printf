@@ -19,10 +19,11 @@ int	write_0(va_list ap, t_options options)
 	int 			length;
 
 	u = va_arg(ap, int);
+	count = 0;
 	if (u == 0 && options.precision == 0)
 	{
 		while (options.width--)
-			count = write(1, " ", 1);
+			count += write(1, " ", 1);
 		return (count);
 	}
 	length = get_length_x(u, options);

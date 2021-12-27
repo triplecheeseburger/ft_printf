@@ -19,10 +19,11 @@ int	write_u(va_list ap, t_options options)
 	int				length;
 
 	u = va_arg(ap, int);
+	count = 0;
 	if (u == 0 && options.precision == 0)
 	{
 		while (options.width--)
-			count = write(1, " ", 1);
+			count += write(1, " ", 1);
 		return (count);
 	}
 	length = get_length_u(u);
@@ -58,7 +59,7 @@ int	print_uinteger(unsigned int u, t_options options, int length)
 	{
 		while (options.width-- > length)
 			count += write(1, &padding, 1);
-		count += ft_putui_precision(u, options);
+		count += ft_putui_precision(u, length, options);
 	}
 	else if (options.flags['-'] == TRUE)
 	{

@@ -55,10 +55,10 @@ int		ft_atoi(const char *str, int *outdex);
 int		proc_sign_dp(int sign, t_options options);
 int		proc_sign_x(unsigned int u, t_options options);
 int		proc_sign_0(unsigned int u, t_options options);
+int		set_toprint(t_options options, char *s);
 void	func_init(int (*func[])(va_list, t_options));
 void	options_init(t_options *options);
 t_bool	is_flag(const char *format);
 size_t	ft_strlen(const char *str);
-size_t	set_toprint(t_options options, char *s);
 
 #endif

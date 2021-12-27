@@ -18,14 +18,15 @@ int	write_d(va_list ap, t_options options)
 	int	length;
 
 	d = va_arg(ap, int);
+	count = 0;
 	if (d == 0 && options.precision == 0)
 	{
 		while (options.width--)
-			count = write(1, " ", 1);
+			count += write(1, " ", 1);
 		return (count);
 	}
-	length = get_length_d(d);
-	count += print_integer(d, length, options);
+	length = get_length_d(d,options);
+	count += print_integer(d, options, length);
 	return (count);
 }
 

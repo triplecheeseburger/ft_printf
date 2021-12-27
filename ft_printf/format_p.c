@@ -22,8 +22,6 @@ int	write_p(va_list ap, t_options options)
 	ptr = va_arg(ap, long long);
 	count = proc_sign_dp(TRUE, options);
 	options.width -= count;
-	if (ptr == 0)
-		return (print_null_ptr(count, options));
 	index = 16;
 	while (--index >= 0)
 	{
@@ -32,7 +30,7 @@ int	write_p(va_list ap, t_options options)
 	}
 	while (++index < 16 && toprint[index] == '0')
 		;
-	count = print_ptr(index, count, options);
+	count = print_ptr(index, count, toprint, options);
 	return (count);
 }
 
