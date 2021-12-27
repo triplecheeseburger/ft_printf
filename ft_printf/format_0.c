@@ -37,7 +37,7 @@ int	print_he0(unsigned int u, t_options options, int length)
 	char	padding;
 
 	count = 0;
-	if (options.flags['0'] == TRUE && options.precision != FALSE)
+	if (options.flags['0'] == TRUE && options.precision == FALSE)
 		padding = '0';
 	else
 		padding = ' ';
@@ -45,7 +45,7 @@ int	print_he0(unsigned int u, t_options options, int length)
 		return (ft_put0_precision(u, length, options));
 	if (options.flags['-'] == FALSE)
 	{
-		while (options.width-- > length)
+		while (options.width > length && options.width-- >= options.precision)
 			count += write(1, &padding, 1);
 		count += ft_put0_precision(u, length, options);
 	}
@@ -72,7 +72,7 @@ int	ft_put0_precision(unsigned int u, int length, t_options options)
 		count += write(1, "0", 1);
 	while (u)
 	{
-		a[--i] = "0123456789abcdef"[u % 16];
+		a[--i] = "0123456789ABCDEF"[u % 16];
 		u /= 16;
 	}
 	count += write(1, &a[i], 8 - i);

@@ -67,7 +67,7 @@ int	print_integer(int d, t_options options, int length)
 	char	padding;
 
 	count = 0;
-	if (options.flags['0'] == TRUE && options.precision != FALSE)
+	if (options.flags['0'] == TRUE && options.precision == FALSE)
 		padding = '0';
 	else
 		padding = ' ';
@@ -75,7 +75,9 @@ int	print_integer(int d, t_options options, int length)
 		return (ft_putnbr_precision((long long)d, length, options));
 	if (options.flags['-'] == FALSE)
 	{
-		while (options.width-- > length)
+		if (d < 0 && options.width-- >= options.precision)
+			options.precision = options.width--;
+		while (options.width > length && options.width-- >= options.precision)
 			count += write(1, &padding, 1);
 		count += ft_putnbr_precision((long long)d, length, options);
 	}

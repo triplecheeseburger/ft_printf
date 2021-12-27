@@ -49,13 +49,14 @@ int	write_s(va_list ap, t_options options)
 	{
 		while (options.width-- > toprint)
 			count += write(1, " ", 1);
-		while (toprint--)
+		while (toprint-- && *s != '\0')
 			count += write(1, s++, 1);
 	}
-	else if (options.flags['+'] == TRUE)
+	else if (options.flags['-'] == TRUE)
 	{
-		while (toprint--)
+		while (toprint-- && *s != '\0')
 			count += write(1, s++, 1);
+		toprint += count + 1;
 		while (options.width-- > toprint)
 			count += write(1, " ", 1);
 	}

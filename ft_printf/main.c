@@ -16,6 +16,6 @@
 
 int	main(void)
 {
-	ft_printf("%#015.15p\n%-+0#p", "1", "2");
-	ft_printf("\n\n");
+	printf("ft return: %d\n", ft_printf("%06d\n", -14));
+	printf("pf return: %d\n", printf("%06d\n", -14));
 }

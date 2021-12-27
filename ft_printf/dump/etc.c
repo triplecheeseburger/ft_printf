@@ -240,3 +240,30 @@ int	print_null_ptr(int count, t_options options)
 	}
 	return (count);
 }
+
+int	print_integer(int d, t_options options, int length)
+{
+	int		count;
+	char	padding;
+
+	count = 0;
+	if (options.flags['0'] == TRUE && options.precision == FALSE)
+		padding = '0';
+	else
+		padding = ' ';
+	if (options.width <= length)
+		return (ft_putnbr_precision((long long)d, length, options));
+	if (options.flags['-'] == FALSE)
+	{
+		while (options.width-- > length)
+			count += write(1, &padding, 1);
+		count += ft_putnbr_precision((long long)d, length, options);
+	}
+	else if (options.flags['-'] == TRUE)
+	{
+		count += ft_putnbr_precision((long long)d, length, options);
+		while (options.width-- > length)
+			count += write(1, " ", 1);
+	}
+	return (count);
+}

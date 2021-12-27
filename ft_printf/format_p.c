@@ -36,6 +36,8 @@ int	write_p(va_list ap, t_options options)
 
 int	print_ptr(int index, int count, char *toprint, t_options options)
 {
+	int	printed;
+
 	if (index == 16)
 		index = 15;
 	if (options.flags['-'] == FALSE)
@@ -53,7 +55,8 @@ int	print_ptr(int index, int count, char *toprint, t_options options)
 		count += 2;
 		while (index < 16)
 			count += write(1, &toprint[index++], 1);
-		while (options.width-- > 16 - index + 2)
+		printed = count;
+		while (options.width-- > printed)
 			count += write(1, " ", 1);
 	}
 	return (count);

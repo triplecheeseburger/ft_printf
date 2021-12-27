@@ -43,6 +43,7 @@ int		get_length_d(int d, t_options options);
 int		get_length_u(unsigned int u);
 int		get_length_x(unsigned int u, t_options options);
 int		print_integer(int d, t_options options, int length);
+int		print_integer_zero(int d, t_options options, int length);
 int		print_uinteger(unsigned int d, t_options options, int length);
 int		print_hex(unsigned int u, t_options options, int length);
 int		print_he0(unsigned int u, t_options options, int length);
