@@ -7,10 +7,13 @@ include_directories(.)
 
 add_executable(ft_printf
         format_cs5.c
-        format_du.c
-        format_x0.c
+        format_d.c
+        format_x.c
         ft_printf.c
         ft_printf.h
         initializers.c
         main.c
-        utils.c proc_sign.c format_p.c)
+        utils.c
+        format_p.c
+        format_u.c
+        format_0.c)

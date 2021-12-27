@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	proc_sign_dp(int sign, t_options *options)
+int	proc_sign_dp(int sign, t_options options)
 {
 	int	count;
 

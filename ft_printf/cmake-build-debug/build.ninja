@@ -79,15 +79,15 @@ build CMakeFiles/ft_printf.dir/format_cs5.c.o: C_COMPILER__ft_printf_Debug /home
   OBJECT_DIR = CMakeFiles/ft_printf.dir
   OBJECT_FILE_DIR = CMakeFiles/ft_printf.dir
 
-build CMakeFiles/ft_printf.dir/format_du.c.o: C_COMPILER__ft_printf_Debug /home/han/42/42cursus/1_circle/ft_printf/ft_printf/format_du.c || cmake_object_order_depends_target_ft_printf
-  DEP_FILE = CMakeFiles/ft_printf.dir/format_du.c.o.d
+build CMakeFiles/ft_printf.dir/format_d.c.o: C_COMPILER__ft_printf_Debug /home/han/42/42cursus/1_circle/ft_printf/ft_printf/format_d.c || cmake_object_order_depends_target_ft_printf
+  DEP_FILE = CMakeFiles/ft_printf.dir/format_d.c.o.d
   FLAGS = -g -std=gnu11
   INCLUDES = -I/home/han/42/42cursus/1_circle/ft_printf/ft_printf/.
   OBJECT_DIR = CMakeFiles/ft_printf.dir
   OBJECT_FILE_DIR = CMakeFiles/ft_printf.dir
 
-build CMakeFiles/ft_printf.dir/format_x0.c.o: C_COMPILER__ft_printf_Debug /home/han/42/42cursus/1_circle/ft_printf/ft_printf/format_x0.c || cmake_object_order_depends_target_ft_printf
-  DEP_FILE = CMakeFiles/ft_printf.dir/format_x0.c.o.d
+build CMakeFiles/ft_printf.dir/format_x.c.o: C_COMPILER__ft_printf_Debug /home/han/42/42cursus/1_circle/ft_printf/ft_printf/format_x.c || cmake_object_order_depends_target_ft_printf
+  DEP_FILE = CMakeFiles/ft_printf.dir/format_x.c.o.d
   FLAGS = -g -std=gnu11
   INCLUDES = -I/home/han/42/42cursus/1_circle/ft_printf/ft_printf/.
   OBJECT_DIR = CMakeFiles/ft_printf.dir
@@ -121,15 +121,22 @@ build CMakeFiles/ft_printf.dir/utils.c.o: C_COMPILER__ft_printf_Debug /home/han/
   OBJECT_DIR = CMakeFiles/ft_printf.dir
   OBJECT_FILE_DIR = CMakeFiles/ft_printf.dir
 
-build CMakeFiles/ft_printf.dir/proc_sign.c.o: C_COMPILER__ft_printf_Debug /home/han/42/42cursus/1_circle/ft_printf/ft_printf/proc_sign.c || cmake_object_order_depends_target_ft_printf
-  DEP_FILE = CMakeFiles/ft_printf.dir/proc_sign.c.o.d
+build CMakeFiles/ft_printf.dir/format_p.c.o: C_COMPILER__ft_printf_Debug /home/han/42/42cursus/1_circle/ft_printf/ft_printf/format_p.c || cmake_object_order_depends_target_ft_printf
+  DEP_FILE = CMakeFiles/ft_printf.dir/format_p.c.o.d
   FLAGS = -g -std=gnu11
   INCLUDES = -I/home/han/42/42cursus/1_circle/ft_printf/ft_printf/.
   OBJECT_DIR = CMakeFiles/ft_printf.dir
   OBJECT_FILE_DIR = CMakeFiles/ft_printf.dir
 
-build CMakeFiles/ft_printf.dir/format_p.c.o: C_COMPILER__ft_printf_Debug /home/han/42/42cursus/1_circle/ft_printf/ft_printf/format_p.c || cmake_object_order_depends_target_ft_printf
-  DEP_FILE = CMakeFiles/ft_printf.dir/format_p.c.o.d
+build CMakeFiles/ft_printf.dir/format_u.c.o: C_COMPILER__ft_printf_Debug /home/han/42/42cursus/1_circle/ft_printf/ft_printf/format_u.c || cmake_object_order_depends_target_ft_printf
+  DEP_FILE = CMakeFiles/ft_printf.dir/format_u.c.o.d
+  FLAGS = -g -std=gnu11
+  INCLUDES = -I/home/han/42/42cursus/1_circle/ft_printf/ft_printf/.
+  OBJECT_DIR = CMakeFiles/ft_printf.dir
+  OBJECT_FILE_DIR = CMakeFiles/ft_printf.dir
+
+build CMakeFiles/ft_printf.dir/format_0.c.o: C_COMPILER__ft_printf_Debug /home/han/42/42cursus/1_circle/ft_printf/ft_printf/format_0.c || cmake_object_order_depends_target_ft_printf
+  DEP_FILE = CMakeFiles/ft_printf.dir/format_0.c.o.d
   FLAGS = -g -std=gnu11
   INCLUDES = -I/home/han/42/42cursus/1_circle/ft_printf/ft_printf/.
   OBJECT_DIR = CMakeFiles/ft_printf.dir
@@ -143,7 +150,7 @@ build CMakeFiles/ft_printf.dir/format_p.c.o: C_COMPILER__ft_printf_Debug /home/h
 #############################################
 # Link the executable ft_printf
 
-build ft_printf: C_EXECUTABLE_LINKER__ft_printf_Debug CMakeFiles/ft_printf.dir/format_cs5.c.o CMakeFiles/ft_printf.dir/format_du.c.o CMakeFiles/ft_printf.dir/format_x0.c.o CMakeFiles/ft_printf.dir/ft_printf.c.o CMakeFiles/ft_printf.dir/initializers.c.o CMakeFiles/ft_printf.dir/main.c.o CMakeFiles/ft_printf.dir/utils.c.o CMakeFiles/ft_printf.dir/proc_sign.c.o CMakeFiles/ft_printf.dir/format_p.c.o
+build ft_printf: C_EXECUTABLE_LINKER__ft_printf_Debug CMakeFiles/ft_printf.dir/format_cs5.c.o CMakeFiles/ft_printf.dir/format_d.c.o CMakeFiles/ft_printf.dir/format_x.c.o CMakeFiles/ft_printf.dir/ft_printf.c.o CMakeFiles/ft_printf.dir/initializers.c.o CMakeFiles/ft_printf.dir/main.c.o CMakeFiles/ft_printf.dir/utils.c.o CMakeFiles/ft_printf.dir/format_p.c.o CMakeFiles/ft_printf.dir/format_u.c.o CMakeFiles/ft_printf.dir/format_0.c.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/ft_printf.dir
   POST_BUILD = :
