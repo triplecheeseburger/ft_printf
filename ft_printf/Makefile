@@ -18,9 +18,8 @@ SRCS =	ft_printf.c \
 		format_d.c \
 		format_u.c \
 		format_x.c \
-		format_0.c \
 		initializers.c \
-		utils.c
+		parsing_utils.c
 OBJS = $(SRCS:%.c=%.o)
 NAME = libftprintf.a
 
