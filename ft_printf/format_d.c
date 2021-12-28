@@ -52,9 +52,7 @@ int	get_length_d(int d, t_options options)
 	count = 0;
 	if (d == 0)
 		return (1);
-	if (d < 0)
-		++count;
-	if (options.flags['+'] == TRUE || options.flags[' '] == TRUE)
+	if (d < 0 || options.flags['+'] == TRUE || options.flags[' '] == TRUE)
 		++count;
 	while (d && ++count)
 		d /= 10;
@@ -77,7 +75,7 @@ int	print_integer(int d, t_options options, int length)
 	{
 		if (d < 0 && options.width-- >= options.precision)
 			options.precision = options.width--;
-		while (options.width > length && options.width-- >= options.precision)
+		while (options.width > length && options.width-- > options.precision)
 			count += write(1, &padding, 1);
 		count += ft_putnbr_precision((long long)d, length, options);
 	}

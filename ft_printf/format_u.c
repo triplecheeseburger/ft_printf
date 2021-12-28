@@ -57,7 +57,7 @@ int	print_uinteger(unsigned int u, t_options options, int length)
 		return (ft_putui_precision(u, length, options));
 	if (options.flags['-'] == FALSE)
 	{
-		while (options.width > length && options.width-- >= options.precision)
+		while (options.width > length && options.width-- > options.precision)
 			count += write(1, &padding, 1);
 		count += ft_putui_precision(u, length, options);
 	}

@@ -27,6 +27,11 @@ int	write_x(va_list ap, t_options options)
 		return (count);
 	}
 	length = get_length_x(u, options);
+	if (options.flags['#'] == TRUE)
+	{
+		length += 2;
+		options.precision += 2;
+	}
 	count += print_hex(u, options, length);
 	return (count);
 }
@@ -38,8 +43,6 @@ int	get_length_x(unsigned int u, t_options options)
 	count = 0;
 	if (u == 0)
 		return (1);
-	if (options.flags['#'] == TRUE)
-		count += 2;
 	while (u && ++count)
 		u = u / 16;
 	return (count);
@@ -59,7 +62,7 @@ int	print_hex(unsigned int u, t_options options, int length)
 		return (ft_putx_precision(u, length, options));
 	if (options.flags['-'] == FALSE)
 	{
-		while (options.width > length && options.width-- >= options.precision)
+		while (options.width > length && options.width-- > options.precision)
 			count += write(1, &padding, 1);
 		count += ft_putx_precision(u, length, options);
 	}
