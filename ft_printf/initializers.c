@@ -23,7 +23,7 @@ void	options_init(t_options *options)
 	options->width = FALSE;
 }
 
-void	func_init(int (*func[])(va_list, t_options))
+void	func_init(int (*func[])(va_list, t_options *))
 {
 	func['c'] = write_c;
 	func['s'] = write_s;

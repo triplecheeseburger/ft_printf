@@ -37,7 +37,7 @@ int	ft_printf(const char *format, ...)
 }
 
 int	f_proc(const char *format, int *index, va_list ap,
-			  int (*func[])(va_list, t_options))
+			  int (*func[])(va_list, t_options *))
 {
 	t_options	options;
 	int			conv;
@@ -55,7 +55,7 @@ int	f_proc(const char *format, int *index, va_list ap,
 		options.flags['.'] = TRUE;
 		options.precision = ft_atoi(&format[*index], index);
 	}
-	count = func[(int)format[conv]](ap, options);
+	count = func[(int)format[conv]](ap, &options);
 	*index = conv + 1;
 	return (count);
 }

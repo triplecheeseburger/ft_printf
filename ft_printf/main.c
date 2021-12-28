@@ -18,7 +18,7 @@ int	main(void)
 {
 	printf("ft return: %d\n", ft_printf("%+6.5d\n", -14));
 	printf("pf return: %d\n", printf("%+6.5d\n", -14));
-	printf("ft return: %d\n", ft_printf("%2.3d\n", 100000));
+	printf("ft return: %d\n", ft_printf("%2.3d\n", 1000));
 	printf("pf return: %d\n", printf("%2.3d\n", 1000));
 	printf("ft return: %d\n", ft_printf("%2.3u\n", 1000));
 	printf("pf return: %d\n", printf("%2.3u\n", 1000));

@@ -12,29 +12,29 @@
 
 #include "ft_printf.h"
 
-int	write_c(va_list ap, t_options options)
+int	write_c(va_list ap, t_options *options)
 {
 	char	c;
 	int		count;
 
 	count = 0;
 	c = va_arg(ap, int);
-	if (options.flags['-'] == FALSE)
+	if (options->flags['-'] == FALSE)
 	{
-		while (options.width-- > 1)
+		while (options->width-- > 1)
 			count += write(1, " ", 1);
 		count += write(1, &c, 1);
 	}
-	else if (options.flags['-'] == TRUE)
+	else if (options->flags['-'] == TRUE)
 	{
 		count += write(1, &c, 1);
-		while (options.width-- > 1)
+		while (options->width-- > 1)
 			count += write(1, " ", 1);
 	}
 	return (count);
 }
 
-int	write_s(va_list ap, t_options options)
+int	write_s(va_list ap, t_options *options)
 {
 	char	*s;
 	int		count;
@@ -44,36 +44,36 @@ int	write_s(va_list ap, t_options options)
 	s = va_arg(ap, char *);
 	if (s == 0)
 		s = "(null)";
-	toprint = set_toprint(options, s);
-	if (options.flags['-'] == FALSE)
+	toprint = set_toprint(s, options);
+	if (options->flags['-'] == FALSE)
 	{
-		while (options.width-- > toprint)
+		while (options->width-- > toprint)
 			count += write(1, " ", 1);
 		while (toprint-- && *s != '\0')
 			count += write(1, s++, 1);
 	}
-	else if (options.flags['-'] == TRUE)
+	else if (options->flags['-'] == TRUE)
 	{
 		while (toprint-- && *s != '\0')
 			count += write(1, s++, 1);
 		toprint += count + 1;
-		while (options.width-- > toprint)
+		while (options->width-- > toprint)
 			count += write(1, " ", 1);
 	}
 	return (count);
 }
 
-int	set_toprint(t_options options, char *s)
+int	set_toprint(char *s, t_options *options)
 {
-	if (options.precision == FALSE)
+	if (options->precision == FALSE)
 		return ((int)ft_strlen(s));
 	else
-		return (options.precision);
+		return (options->precision);
 }
 
-int	write_5(va_list ap, t_options options)
+int	write_5(va_list ap, t_options *options)
 {
-	if (ap || options.width)
+	if (ap || options->width)
 		write(1, "", 0);
 	return (write(1, "%", 1));
 }

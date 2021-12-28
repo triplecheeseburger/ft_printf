@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	write_x(va_list ap, t_options options)
+int	write_x(va_list ap, t_options *options)
 {
 	unsigned int	u;
 	int 			count;
@@ -20,62 +20,62 @@ int	write_x(va_list ap, t_options options)
 
 	u = va_arg(ap, int);
 	count = 0;
-	if (u == 0 && options.precision == 0)
+	if (u == 0 && options->precision == 0)
 	{
-		while (options.width--)
+		while (options->width--)
 			count += write(1, " ", 1);
 		return (count);
 	}
 	length = get_length_x(u, options);
-	if (options.flags['#'] == TRUE)
-	{
-		length += 2;
-		options.precision += 2;
-	}
-	count += print_hex(u, options, length);
+	count += print_hex(u, length, options);
 	return (count);
 }
 
-int	get_length_x(unsigned int u, t_options options)
+int	get_length_x(unsigned int u, t_options *options)
 {
 	int	count;
 
 	count = 0;
 	if (u == 0)
 		return (1);
+	if (options->flags['#'] == TRUE)
+	{
+		count += 2;
+		options->precision += 2;
+	}
 	while (u && ++count)
 		u = u / 16;
 	return (count);
 }
 
-int	print_hex(unsigned int u, t_options options, int length)
+int	print_hex(unsigned int u, int length, t_options *options)
 {
 	int		count;
 	char	padding;
 
 	count = 0;
-	if (options.flags['0'] == TRUE && options.precision == FALSE)
+	if (options->flags['0'] == TRUE && options->precision == FALSE)
 		padding = '0';
 	else
 		padding = ' ';
-	if (options.width <= length)
+	if (options->width <= length)
 		return (ft_putx_precision(u, length, options));
-	if (options.flags['-'] == FALSE)
+	if (options->flags['-'] == FALSE)
 	{
-		while (options.width > length && options.width-- > options.precision)
+		while (options->width > length && options->width-- > options->precision)
 			count += write(1, &padding, 1);
 		count += ft_putx_precision(u, length, options);
 	}
-	else if (options.flags['-'] == TRUE)
+	else if (options->flags['-'] == TRUE)
 	{
 		count += ft_putx_precision(u, length, options);
-		while (options.width-- > length)
+		while (options->width-- > length)
 			count += write(1, " ", 1);
 	}
 	return (count);
 }
 
-int	ft_putx_precision(unsigned int u, int length, t_options options)
+int	ft_putx_precision(unsigned int u, int length, t_options *options)
 {
 	char	a[8];
 	int		i;
@@ -83,7 +83,7 @@ int	ft_putx_precision(unsigned int u, int length, t_options options)
 
 	count = proc_sign_x(u, options);
 	i = 8;
-	while (options.precision-- > length)
+	while (options->precision-- > length)
 		count += write(1, "0", 1);
 	if (u == 0)
 		count += write(1, "0", 1);
@@ -96,12 +96,12 @@ int	ft_putx_precision(unsigned int u, int length, t_options options)
 	return (count);
 }
 
-int	proc_sign_x(unsigned int u, t_options options)
+int	proc_sign_x(unsigned int u, t_options *options)
 {
 	int	count;
 
 	count = 0;
-	if (options.flags['#'] == 1 && u != 0)
+	if (options->flags['#'] == 1 && u != 0)
 		count += write(1, "0x", 2);
 	return (count);
 }
