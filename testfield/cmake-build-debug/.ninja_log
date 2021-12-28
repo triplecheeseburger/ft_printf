@@ -1,0 +1,24 @@
+# ninja log v5
+6	160	1640715918648017614	CMakeFiles/ft_printf.dir/format_x.c.o	624cfaee1660bf83
+8	165	1640715918652017516	CMakeFiles/ft_printf.dir/utils.c.o	3558c3cc8b169f90
+6	165	1640715918652017516	CMakeFiles/ft_printf.dir/format_d.c.o	e68fbf7e2cf6144c
+7	165	1640715918652017516	CMakeFiles/ft_printf.dir/ft_printf.c.o	bb94c2218a43ec51
+160	189	1640715918680016831	CMakeFiles/ft_printf.dir/format_0.c.o	d683e933e627b07c
+8	165	1640715918648017614	CMakeFiles/ft_printf.dir/initializers.c.o	1898407c7285f6
+7	160	1640715918648017614	CMakeFiles/ft_printf.dir/main.c.o	5749577af7ad05f8
+160	189	1640715918680016831	CMakeFiles/ft_printf.dir/format_u.c.o	7faf0f9db3599f27
+2	24	1640716252734028931	build.ninja	697b8a91fed2e301
+9	165	1640715918652017516	CMakeFiles/ft_printf.dir/format_p.c.o	b0de134a196ab403
+4	165	1640715918656017419	CMakeFiles/ft_printf.dir/format_cs5.c.o	a27fbcd72e0cd040
+189	236	1640715918724015754	ft_printf	d0379bbf4e9e3f9c
+1	41	1640716254790002965	CMakeFiles/ft_printf.dir/ft_printf.c.o	188cbc3c931161a3
+1	43	1640716254790002965	CMakeFiles/ft_printf.dir/format_x.c.o	15852c8422026492
+0	49	1640716254798002864	CMakeFiles/ft_printf.dir/format_cs5.c.o	aeba796fbcac1c6b
+2	51	1640716254798002864	CMakeFiles/ft_printf.dir/main.c.o	4b69080d6f9b4b0a
+1	57	1640716254806002764	CMakeFiles/ft_printf.dir/format_d.c.o	d0eaa3d614513e95
+2	57	1640716254806002764	CMakeFiles/ft_printf.dir/initializers.c.o	8f856ab53cb1809a
+3	63	1640716254810002713	CMakeFiles/ft_printf.dir/utils.c.o	380832951d1b5e7e
+4	68	1640716254818002612	CMakeFiles/ft_printf.dir/format_p.c.o	1f61f65d64aad924
+43	72	1640716254822002562	CMakeFiles/ft_printf.dir/format_0.c.o	7dd946f26a80441a
+41	86	1640716254834002410	CMakeFiles/ft_printf.dir/format_u.c.o	45090bb7c45db293
+86	108	1640716254858002108	ft_printf	d0379bbf4e9e3f9c
