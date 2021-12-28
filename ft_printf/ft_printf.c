@@ -17,7 +17,7 @@ int	ft_printf(const char *format, ...)
 	va_list	ap;
 	int		count;
 	int		index;
-	int		(*func[128])(va_list, t_options);
+	int		(*func[128])(va_list, t_options *);
 
 	if (format == 0)
 		return (-1);
