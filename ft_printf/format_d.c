@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_du.c                                        :+:      :+:    :+:   */
+/*   format_d.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakim <hakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 00:36:30 by hakim             #+#    #+#             */
-/*   Updated: 2021/12/07 13:28:44 by hakim            ###   ########.fr       */
+/*   Updated: 2021/12/29 03:42:50 by hakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -20,6 +20,7 @@ void	write_d(va_list ap, t_options *opts)
 	{
 		while (opts->width--)
 			opts->count += write(1, " ", 1);
+		return ;
 	}
 	get_length_d(d, opts);
 	print_integer(d, opts);
