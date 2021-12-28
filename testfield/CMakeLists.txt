@@ -13,7 +13,7 @@ add_executable(ft_printf
         ft_printf.h
         initializers.c
         main.c
-        utils.c
+        parsing_utils.c
         format_p.c
         format_u.c
-        format_0.c)
+        )

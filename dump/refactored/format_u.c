@@ -6,7 +6,7 @@
 /*   By: hakim <hakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 02:27:36 by hakim             #+#    #+#             */
-/*   Updated: 2021/12/28 02:27:39 by hakim            ###   ########.fr       */
+/*   Updated: 2021/12/29 03:42:40 by hakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ void	get_length_u(unsigned int u, t_options *opts)
 
 void	print_uinteger(unsigned int u, t_options *opts)
 {
+	if (opts->width <= opts->length)
+	{
+		ft_putui_prec(u, opts);
+		return ;
+	}
 	if (opts->flags['-'] == FALSE)
 	{
 		while (opts->width > opts->length && opts->width-- > opts->prec)

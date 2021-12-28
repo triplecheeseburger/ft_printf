@@ -42,11 +42,6 @@ void	get_length_x(unsigned int u, t_options *opts)
 
 void	print_hex(unsigned int u, t_options *opts)
 {
-	if (opts->width <= opts->length)
-	{
-		ft_putx_prec(u, opts);
-		return ;
-	}
 	if (opts->flags['-'] == FALSE)
 	{
 		while (opts->width > opts->length && opts->width-- > opts->prec)
@@ -64,18 +59,25 @@ void	print_hex(unsigned int u, t_options *opts)
 void	ft_putx_prec(unsigned int u, t_options *opts)
 {
 	char	a[8];
+	char	*hex;
 	int		i;
 
-	if (opts->flags['#'] == 1 && u != 0)
+	if (opts->xcase == LOWER && opts->flags['#'] == 1 && u != 0)
 		opts->count += write(1, "0x", 2);
+	else if (opts->xcase == UPPER && opts->flags['#'] == 1 && u != 0)
+		opts->count += write(1, "0X", 2);
 	i = 8;
 	while (opts->prec > opts->length && ++opts->length)
 		opts->count += write(1, "0", 1);
 	if (u == 0)
 		opts->count += write(1, "0", 1);
+	if (opts->xcase == LOWER)
+		hex = "0123456789abcdef";
+	else if (opts->xcase == UPPER)
+		hex = "0123456789ABCDEF";
 	while (u)
 	{
-		a[--i] = "0123456789abcdef"[u % 16];
+		a[--i] = hex[u % 16];
 		u /= 16;
 	}
 	opts->count += write(1, &a[i], 8 - i);

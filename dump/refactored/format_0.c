@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_u.c                                         :+:      :+:    :+:   */
+/*   format_0.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakim <hakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 02:27:36 by hakim             #+#    #+#             */
-/*   Updated: 2021/12/28 02:27:39 by hakim            ###   ########.fr       */
+/*   Created: 2021/12/28 02:27:28 by hakim             #+#    #+#             */
+/*   Updated: 2021/12/28 02:27:29 by hakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	write_u(va_list ap, t_options *opts)
+void	write_0(va_list ap, t_options *opts)
 {
 	unsigned int	u;
 
@@ -23,48 +23,47 @@ void	write_u(va_list ap, t_options *opts)
 			opts->count += write(1, " ", 1);
 		return ;
 	}
-	get_length_u(u, opts);
-	print_uinteger(u, opts);
+	get_length_x(u, opts);
+	print_he0(u, opts);
 }
 
-void	get_length_u(unsigned int u, t_options *opts)
+void	print_he0(unsigned int u, t_options *opts)
 {
-	if (u == 0)
-		opts->length = 1;
-	while (u && ++opts->length)
-		u /= 10;
-}
-
-void	print_uinteger(unsigned int u, t_options *opts)
-{
+	if (opts->width <= opts->length)
+	{
+		ft_put0_prec(u, opts);
+		return ;
+	}
 	if (opts->flags['-'] == FALSE)
 	{
 		while (opts->width > opts->length && opts->width-- > opts->prec)
 			opts->count += write(1, &opts->padd, 1);
-		ft_putui_prec(u, opts);
+		ft_put0_prec(u, opts);
 	}
 	else if (opts->flags['-'] == TRUE)
 	{
-		ft_putui_prec(u, opts);
+		ft_put0_prec(u, opts);
 		while (opts->width-- > opts->length)
 			opts->count += write(1, " ", 1);
 	}
 }
 
-void	ft_putui_prec(unsigned int u, t_options *opts)
+void	ft_put0_prec(unsigned int u, t_options *opts)
 {
-	char	a[10];
+	char	a[8];
 	int		i;
 
-	i = 10;
+	if (opts->flags['#'] == 1 && u != 0)
+		opts->count += write(1, "0X", 2);
+	i = 8;
 	while (opts->prec > opts->length && ++opts->length)
 		opts->count += write(1, "0", 1);
 	if (u == 0)
 		opts->count += write(1, "0", 1);
 	while (u)
 	{
-		a[--i] = u % 10 + '0';
-		u /= 10;
+		a[--i] = "0123456789ABCDEF"[u % 16];
+		u /= 16;
 	}
-	opts->count += write(1, &a[i], 10 - i);
+	opts->count += write(1, &a[i], 8 - i);
 }

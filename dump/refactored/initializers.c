@@ -19,7 +19,6 @@ void	opts_init(t_options *opts)
 	opts->flags['+'] = FALSE;
 	opts->flags['-'] = FALSE;
 	opts->flags['0'] = FALSE;
-	opts->xcase = LOWER;
 	opts->prec = FALSE;
 	opts->width = FALSE;
 	opts->length = 0;
@@ -35,6 +34,6 @@ void	func_init(void (*func[])(va_list, t_options *))
 	func['i'] = write_d;
 	func['u'] = write_u;
 	func['x'] = write_x;
-	func['X'] = write_x;
+	func['X'] = write_0;
 	func['%'] = write_5;
 }

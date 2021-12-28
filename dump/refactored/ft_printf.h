@@ -18,14 +18,11 @@
 
 # define TRUE 1
 # define FALSE -1
-# define LOWER 0
-# define UPPER 1
 
 typedef char	t_bool;
 typedef struct s_opts
 {
 	t_bool	flags[49];
-	t_bool	xcase;
 	int		prec;
 	int		width;
 	int		length;
@@ -43,6 +40,7 @@ void	write_p(va_list ap, t_options *opts);
 void	write_d(va_list ap, t_options *opts);
 void	write_u(va_list ap, t_options *opts);
 void	write_x(va_list ap, t_options *opts);
+void	write_0(va_list ap, t_options *opts);
 void	write_5(va_list ap, t_options *opts);
 void	get_length_d(int d, t_options *opts);
 void	get_length_u(unsigned int u, t_options *opts);
@@ -51,10 +49,12 @@ void	get_length_s(char *s, t_options *opts);
 void	print_integer(int d, t_options *opts);
 void	print_uinteger(unsigned int d, t_options *opts);
 void	print_hex(unsigned int u, t_options *opts);
+void	print_he0(unsigned int u, t_options *opts);
 void	print_ptr(int index, char *toprint, t_options *opts);
 void	ft_putnbr_prec(long long n, t_options *opts);
 void	ft_putui_prec(unsigned int u, t_options *opts);
 void	ft_putx_prec(unsigned int u, t_options *opts);
+void	ft_put0_prec(unsigned int u, t_options *opts);
 void	func_init(void (*func[])(va_list, t_options *));
 void	opts_init(t_options *opts);
 int		ft_atoi(const char *str, int *outdex);

@@ -58,8 +58,6 @@ int	f_proc(const char *format, int *index, va_list ap,
 		opts.padd = '0';
 	else
 		opts.padd = ' ';
-	if (format[conv] == 'X')
-		opts.xcase = UPPER;
 	func[(int)format[conv]](ap, &opts);
 	*index = conv + 1;
 	return ((int)opts.count);
