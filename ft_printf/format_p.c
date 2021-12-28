@@ -43,21 +43,21 @@ int	print_ptr(int index, int count, char *toprint, t_options *options)
 	if (options->flags['-'] == FALSE)
 	{
 		while (options->width-- > 16 - index + 2)
-			count += write(1, " ", 1);
+			count += (int)write(1, " ", 1);
 		write(1, "0x", 2);
 		count += 2;
 		while (index < 16)
-			count += write(1, &toprint[index++], 1);
+			count += (int)write(1, &toprint[index++], 1);
 	}
 	else if (options->flags['-'] == TRUE)
 	{
 		write(1, "0x", 2);
 		count += 2;
 		while (index < 16)
-			count += write(1, &toprint[index++], 1);
+			count += (int)write(1, &toprint[index++], 1);
 		printed = count;
 		while (options->width-- > printed)
-			count += write(1, " ", 1);
+			count += (int)write(1, " ", 1);
 	}
 	return (count);
 }

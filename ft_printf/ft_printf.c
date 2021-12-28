@@ -55,6 +55,10 @@ int	f_proc(const char *format, int *index, va_list ap,
 		options.flags['.'] = TRUE;
 		options.precision = ft_atoi(&format[*index], index);
 	}
+	if (options.flags['0'] == TRUE && options.precision == FALSE)
+		options.padding = '0';
+	else
+		options.padding = ' ';
 	count = func[(int)format[conv]](ap, &options);
 	*index = conv + 1;
 	return (count);
