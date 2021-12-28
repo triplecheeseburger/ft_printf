@@ -12,73 +12,66 @@
 
 #include "ft_printf.h"
 
-int	write_c(va_list ap, t_options *options)
+void	write_c(va_list ap, t_options *opts)
 {
 	char	c;
-	int		count;
 
-	count = 0;
 	c = va_arg(ap, int);
-	if (options->flags['-'] == FALSE)
+	if (opts->flags['-'] == FALSE)
 	{
-		while (options->width-- > 1)
-			count += (int)write(1, " ", 1);
-		count += (int)write(1, &c, 1);
+		while (opts->width-- > 1)
+			opts->count += write(1, " ", 1);
+		opts->count += write(1, &c, 1);
 	}
-	else if (options->flags['-'] == TRUE)
+	else if (opts->flags['-'] == TRUE)
 	{
-		count += (int)write(1, &c, 1);
-		while (options->width-- > 1)
-			count += (int)write(1, " ", 1);
+		opts->count += write(1, &c, 1);
+		while (opts->width-- > 1)
+			opts->count += write(1, " ", 1);
 	}
-	return (count);
 }
 
-int	write_s(va_list ap, t_options *options)
+void	write_s(va_list ap, t_options *opts)
 {
 	char	*s;
-	int		count;
-	int		length;
 
-	count = 0;
 	s = va_arg(ap, char *);
 	if (s == 0)
 		s = "(null)";
-	length = get_length_s(s, options);
-	if (options->flags['-'] == FALSE)
+	get_length_s(s, opts);
+	if (opts->flags['-'] == FALSE)
 	{
-		while (options->width-- > length)
-			count += (int)write(1, " ", 1);
-		while (length-- && *s != '\0')
-			count += (int)write(1, s++, 1);
+		while (opts->width-- > opts->length)
+			opts->count += write(1, " ", 1);
+		while (opts->length-- && *s != '\0')
+			opts->count += write(1, s++, 1);
 	}
-	else if (options->flags['-'] == TRUE)
+	else if (opts->flags['-'] == TRUE)
 	{
-		while (length-- && *s != '\0')
-			count += (int)write(1, s++, 1);
-		length += count + 1;
-		while (options->width-- > length)
-			count += (int)write(1, " ", 1);
+		while (opts->length-- && *s != '\0')
+			opts->count += write(1, s++, 1);
+		opts->length += (int)opts->count + 1;
+		while (opts->width-- > opts->length)
+			opts->count += write(1, " ", 1);
 	}
-	return (count);
 }
 
-int	get_length_s(char *s, t_options *options)
+void	get_length_s(char *s, t_options *opts)
 {
 	int	len;
 
 	len = (int)ft_strlen(s);
-	if (options->precision == FALSE)
-		return (len);
-	else if (options->width > len && options->precision > len)
-		return (len);
+	if (opts->prec == FALSE)
+		opts->length = len;
+	else if (opts->width > len && opts->prec > len)
+		opts->length = len;
 	else
-		return (options->precision);
+		opts->length = (opts->prec);
 }
 
-int	write_5(va_list ap, t_options *options)
+void	write_5(va_list ap, t_options *opts)
 {
-	if (ap || options->width)
+	if (ap)
 		write(1, "", 0);
-	return (write(1, "%", 1));
+	opts->count = write(1, "%", 1);
 }

@@ -20,46 +20,44 @@
 # define FALSE -1
 
 typedef char	t_bool;
-typedef struct s_options
+typedef struct s_opts
 {
 	t_bool	flags[49];
-	int		precision;
+	int		prec;
 	int		width;
 	int		length;
-	char	padding;
+	char	padd;
+	ssize_t	count;
 }	t_options;
 
 int		ft_printf(const char *format, ...);
 int		f_proc(const char *format, int *index, va_list ap,
-			int (*func[])(va_list, t_options *));
+			void (*func[])(va_list, t_options *));
 int		find_conv(const char *format);
-int		write_c(va_list ap, t_options *options);
-int		write_s(va_list	ap, t_options *options);
-int		write_p(va_list ap, t_options *options);
-int		write_d(va_list ap, t_options *options);
-int		write_u(va_list ap, t_options *options);
-int		write_x(va_list ap, t_options *options);
-int		write_0(va_list ap, t_options *options);
-int		write_5(va_list ap, t_options *options);
-int		get_length_d(int d, t_options *options);
-int		get_length_u(unsigned int u);
-int		get_length_x(unsigned int u, t_options *options);
-int		get_length_s(char *s, t_options *options);
-int		print_integer(int d, t_options *options);
-int		print_uinteger(unsigned int d, t_options *options);
-int		print_hex(unsigned int u, t_options *options);
-int		print_he0(unsigned int u, t_options *options);
-int		print_ptr(int index, int count, char *toprint, t_options *options);
-int		ft_putnbr_precision(long long n, t_options *options);
-int		ft_putui_precision(unsigned int u, t_options *options);
-int		ft_putx_precision(unsigned int u, t_options *options);
-int		ft_put0_precision(unsigned int u, t_options *options);
+void	write_c(va_list ap, t_options *opts);
+void	write_s(va_list	ap, t_options *opts);
+void	write_p(va_list ap, t_options *opts);
+void	write_d(va_list ap, t_options *opts);
+void	write_u(va_list ap, t_options *opts);
+void	write_x(va_list ap, t_options *opts);
+void	write_0(va_list ap, t_options *opts);
+void	write_5(va_list ap, t_options *opts);
+void	get_length_d(int d, t_options *opts);
+void	get_length_u(unsigned int u, t_options *opts);
+void	get_length_x(unsigned int u, t_options *opts);
+void	get_length_s(char *s, t_options *opts);
+void	print_integer(int d, t_options *opts);
+void	print_uinteger(unsigned int d, t_options *opts);
+void	print_hex(unsigned int u, t_options *opts);
+void	print_he0(unsigned int u, t_options *opts);
+void	print_ptr(int index, char *toprint, t_options *opts);
+void	ft_putnbr_prec(long long n, t_options *opts);
+void	ft_putui_prec(unsigned int u, t_options *opts);
+void	ft_putx_prec(unsigned int u, t_options *opts);
+void	ft_put0_prec(unsigned int u, t_options *opts);
+void	func_init(void (*func[])(va_list, t_options *));
+void	opts_init(t_options *opts);
 int		ft_atoi(const char *str, int *outdex);
-int		proc_sign_dp(int sign, t_options *options);
-int		proc_sign_x(unsigned int u, t_options *options);
-int		proc_sign_0(unsigned int u, t_options *options);
-void	func_init(int (*func[])(va_list, t_options *));
-void	options_init(t_options *options);
 t_bool	is_flag(const char *format);
 size_t	ft_strlen(const char *str);
 

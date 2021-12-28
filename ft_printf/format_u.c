@@ -12,76 +12,64 @@
 
 #include "ft_printf.h"
 
-int	write_u(va_list ap, t_options *options)
+void	write_u(va_list ap, t_options *opts)
 {
 	unsigned int	u;
-	int				count;
 
 	u = va_arg(ap, int);
-	count = 0;
-	if (u == 0 && options->precision == 0)
+	if (u == 0 && opts->prec == 0)
 	{
-		while (options->width--)
-			count += (int)write(1, " ", 1);
-		return (count);
+		while (opts->width--)
+			opts->count += write(1, " ", 1);
+		return ;
 	}
-	options->length = get_length_u(u);
-	count = print_uinteger(u, options);
-	return (count);
+	get_length_u(u, opts);
+	print_uinteger(u, opts);
 }
 
-int	get_length_u(unsigned int u)
+void	get_length_u(unsigned int u, t_options *opts)
 {
-	int	count;
-
-	count = 0;
 	if (u == 0)
-		return (1);
-	while (u && ++count)
+		opts->length = 1;
+	while (u && ++opts->count)
 		u /= 10;
-	return (count);
 }
 
-int	print_uinteger(unsigned int u, t_options *options)
+void	print_uinteger(unsigned int u, t_options *opts)
 {
-	int		count;
-
-	count = 0;
-	if (options->width <= options->length)
-		return (ft_putui_precision(u, options));
-	if (options->flags['-'] == FALSE)
+	if (opts->width <= opts->length)
 	{
-		while (options->width > options->length
-			&& options->width-- > options->precision)
-			count += (int)write(1, &options->padding, 1);
-		count += ft_putui_precision(u, options);
+		ft_putui_prec(u, opts);
+		return ;
 	}
-	else if (options->flags['-'] == TRUE)
+	if (opts->flags['-'] == FALSE)
 	{
-		count += ft_putui_precision(u, options);
-		while (options->width-- > options->length)
-			count += (int)write(1, " ", 1);
+		while (opts->width > opts->length && opts->width-- > opts->prec)
+			opts->count += write(1, &opts->padd, 1);
+		ft_putui_prec(u, opts);
 	}
-	return (count);
+	else if (opts->flags['-'] == TRUE)
+	{
+		ft_putui_prec(u, opts);
+		while (opts->width-- > opts->length)
+			opts->count += write(1, " ", 1);
+	}
 }
 
-int	ft_putui_precision(unsigned int u, t_options *options)
+void	ft_putui_prec(unsigned int u, t_options *opts)
 {
 	char	a[10];
 	int		i;
-	int		count;
 
-	count = 0;
 	i = 10;
-	while (options->precision > options->length && ++options->length)
-		count += (int)write(1, "0", 1);
+	while (opts->prec > opts->length && ++opts->length)
+		opts->count += write(1, "0", 1);
 	if (u == 0)
-		count += (int)write(1, "0", 1);
+		opts->count += write(1, "0", 1);
 	while (u)
 	{
 		a[--i] = u % 10 + '0';
 		u /= 10;
 	}
-	count += (int)write(1, &a[i], 10 - i);
-	return (count);
+	opts->count += write(1, &a[i], 10 - i);
 }

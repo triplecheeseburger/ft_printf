@@ -11,103 +11,74 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	write_d(va_list ap, t_options *options)
+void	write_d(va_list ap, t_options *opts)
 {
 	int	d;
-	int	count;
 
 	d = va_arg(ap, int);
-	count = 0;
-	if (d == 0 && options->precision == 0)
+	if (d == 0 && opts->prec == 0)
 	{
-		while (options->width--)
-			count += (int)write(1, " ", 1);
-		return (count);
+		while (opts->width--)
+			opts->count += write(1, " ", 1);
 	}
-	options->length = get_length_d(d, options);
-	count += print_integer(d, options);
-	return (count);
+	get_length_d(d, opts);
+	print_integer(d, opts);
 }
 
-int	proc_sign_dp(int sign, t_options *options)
+void	get_length_d(int d, t_options *opts)
 {
-	int	count;
-
-	count = 0;
-	if (sign == TRUE)
-	{
-		if (options->flags['+'] == 1)
-			count += (int)write(1, "+", 1);
-		else if (options->flags[' '] == 1)
-			count += (int)write(1, " ", 1);
-	}
-	return (count);
-}
-
-int	get_length_d(int d, t_options *options)
-{
-	int	count;
-
-	count = 0;
 	if (d == 0)
-		return (1);
-	if (d < 0 || options->flags['+'] == TRUE || options->flags[' '] == TRUE)
-		++count;
-	while (d && ++count)
+		opts->length = 1;
+	if (d < 0 || opts->flags['+'] == TRUE || opts->flags[' '] == TRUE)
+		++opts->length;
+	while (d && ++opts->length)
 		d /= 10;
-	return (count);
 }
 
-int	print_integer(int d, t_options *options)
+void	print_integer(int d, t_options *opts)
 {
-	int		count;
-
-	count = 0;
-	if (options->flags['-'] == FALSE)
+	if (opts->flags['-'] == FALSE)
 	{
-		if (d < 0 && options->padding == '0'
-			&& options->width > options->precision)
-			options->precision = --options->width;
-		if (d < 0 && options->precision > options->length
-			&& options->width > options->precision)
-			--options->width;
-		while (options->width > options->length
-			&& options->width-- > options->precision)
-			count += (int)write(1, &options->padding, 1);
-		count += ft_putnbr_precision((long long)d, options);
+		if (d < 0 && opts->padd == '0' && opts->width > opts->prec)
+			opts->prec = --opts->width;
+		if (d < 0 && opts->prec > opts->length && opts->width > opts->prec)
+			--opts->width;
+		while (opts->width > opts->length && opts->width-- > opts->prec)
+			opts->count += write(1, &opts->padd, 1);
+		ft_putnbr_prec((long long)d, opts);
 	}
-	else if (options->flags['-'] == TRUE)
+	else if (opts->flags['-'] == TRUE)
 	{
-		count += ft_putnbr_precision((long long)d, options);
-		while (options->width-- > options->length)
-			count += (int)write(1, " ", 1);
+		ft_putnbr_prec((long long)d, opts);
+		while (opts->width-- > opts->length)
+			opts->count += write(1, " ", 1);
 	}
-	return (count);
 }
 
-int	ft_putnbr_precision(long long n, t_options *options)
+void	ft_putnbr_prec(long long n, t_options *opts)
 {
 	char	a[10];
 	int		i;
-	int		count;
 
-	count = proc_sign_dp(n >= 0, options);
+	if (n >= 0 && opts->flags['+'] == 1)
+		opts->count += write(1, "+", 1);
+	else if (n >= 0 && opts->flags[' '] == 1)
+		opts->count += write(1, " ", 1);
 	i = 10;
-	options->precision += n < 0;
+	opts->prec += n < 0;
 	if (n < 0)
 	{
-		count += (int)write(1, "-", 1);
+		opts->count += write(1, "-", 1);
 		n = -n;
 	}
-	while (options->precision > options->length && ++options->length)
-		count += (int)write(1, "0", 1);
+	while (opts->prec > opts->length && ++opts->length)
+		opts->count += write(1, "0", 1);
 	if (n == 0)
-		count += (int)write(1, "0", 1);
+		opts->count += write(1, "0", 1);
 	while (n)
 	{
 		a[--i] = n % 10 + '0';
 		n /= 10;
 	}
-	count += (int)write(1, &a[i], 10 - i);
-	return (count);
+	opts->count += write(1, &a[i], 10 - i);
 }

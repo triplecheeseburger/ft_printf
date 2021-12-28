@@ -12,16 +12,18 @@
 
 #include "ft_printf.h"
 
-int	write_p(va_list ap, t_options *options)
+void	write_p(va_list ap, t_options *opts)
 {
 	unsigned long long	ptr;
 	int					index;
-	int					count;
 	char				toprint[16];
 
 	ptr = va_arg(ap, long long);
-	count = proc_sign_dp(TRUE, options);
-	options->width -= count;
+	if (opts->flags['+'] == 1)
+		opts->count += write(1, "+", 1);
+	else if (opts->flags[' '] == 1)
+		opts->count += write(1, " ", 1);
+	opts->width -= (int)opts->count;
 	index = 16;
 	while (--index >= 0)
 	{
@@ -30,34 +32,32 @@ int	write_p(va_list ap, t_options *options)
 	}
 	while (++index < 16 && toprint[index] == '0')
 		;
-	count = print_ptr(index, count, toprint, options);
-	return (count);
+	print_ptr(index, toprint, opts);
 }
 
-int	print_ptr(int index, int count, char *toprint, t_options *options)
+void	print_ptr(int index, char *toprint, t_options *opts)
 {
 	int	printed;
 
 	if (index == 16)
 		index = 15;
-	if (options->flags['-'] == FALSE)
+	if (opts->flags['-'] == FALSE)
 	{
-		while (options->width-- > 16 - index + 2)
-			count += (int)write(1, " ", 1);
+		while (opts->width-- > 16 - index + 2)
+			opts->count += write(1, " ", 1);
 		write(1, "0x", 2);
-		count += 2;
+		opts->count += 2;
 		while (index < 16)
-			count += (int)write(1, &toprint[index++], 1);
+			opts->count += write(1, &toprint[index++], 1);
 	}
-	else if (options->flags['-'] == TRUE)
+	else if (opts->flags['-'] == TRUE)
 	{
 		write(1, "0x", 2);
-		count += 2;
+		opts->count += 2;
 		while (index < 16)
-			count += (int)write(1, &toprint[index++], 1);
-		printed = count;
-		while (options->width-- > printed)
-			count += (int)write(1, " ", 1);
+			opts->count += write(1, &toprint[index++], 1);
+		printed = (int)opts->count;
+		while (opts->width-- > printed)
+			opts->count += write(1, " ", 1);
 	}
-	return (count);
 }

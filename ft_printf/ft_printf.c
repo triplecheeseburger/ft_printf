@@ -17,7 +17,7 @@ int	ft_printf(const char *format, ...)
 	va_list	ap;
 	int		count;
 	int		index;
-	int		(*func[128])(va_list, t_options *);
+	void	(*func[128])(va_list, t_options *);
 
 	if (format == 0)
 		return (-1);
@@ -37,29 +37,28 @@ int	ft_printf(const char *format, ...)
 }
 
 int	f_proc(const char *format, int *index, va_list ap,
-			  int (*func[])(va_list, t_options *))
+			  void (*func[])(va_list, t_options *))
 {
-	t_options	options;
+	t_options	opts;
 	int			conv;
-	int			count;
 	int			opdex;
 
 	conv = *index + find_conv(&format[*index]);
-	options_init(&options);
+	opts_init(&opts);
 	opdex = *index;
 	while (++opdex < conv && is_flag(&format[++(*index)]))
-		options.flags[(int)format[*index]] = TRUE;
-	options.width = ft_atoi(&format[*index], index);
+		opts.flags[(int)format[*index]] = TRUE;
+	opts.width = ft_atoi(&format[*index], index);
 	if (format[(*index)++] == '.')
 	{
-		options.flags['.'] = TRUE;
-		options.precision = ft_atoi(&format[*index], index);
+		opts.flags['.'] = TRUE;
+		opts.prec = ft_atoi(&format[*index], index);
 	}
-	if (options.flags['0'] == TRUE && options.precision == FALSE)
-		options.padding = '0';
+	if (opts.flags['0'] == TRUE && opts.prec == FALSE)
+		opts.padd = '0';
 	else
-		options.padding = ' ';
-	count = func[(int)format[conv]](ap, &options);
+		opts.padd = ' ';
+	func[(int)format[conv]](ap, &opts);
 	*index = conv + 1;
-	return (count);
+	return ((int)opts.count);
 }
