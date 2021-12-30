@@ -22,6 +22,7 @@ void	opts_init(t_options *opts)
 	opts->xcase = LOWER;
 	opts->prec = FALSE;
 	opts->width = FALSE;
+	opts->padd = ' ';
 	opts->length = 0;
 	opts->count = 0;
 }

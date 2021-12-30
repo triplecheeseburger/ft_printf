@@ -66,7 +66,7 @@ void	get_length_s(char *s, t_options *opts)
 	else if (opts->width > len && opts->prec > len)
 		opts->length = len;
 	else
-		opts->length = (opts->prec);
+		opts->length = opts->prec;
 }
 
 void	write_5(va_list ap, t_options *opts)
