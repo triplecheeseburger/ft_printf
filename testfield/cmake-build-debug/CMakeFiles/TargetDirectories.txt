@@ -1,3 +1,0 @@
-/home/han/42/42cursus/1_circle/ft_printf/testfield/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/han/42/42cursus/1_circle/ft_printf/testfield/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/han/42/42cursus/1_circle/ft_printf/testfield/cmake-build-debug/CMakeFiles/ft_printf.dir
