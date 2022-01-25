@@ -57,7 +57,7 @@ void	ft_putui_prec(unsigned int u, t_options *opts);
 void	ft_putx_prec(unsigned int u, t_options *opts);
 void	func_init(void (*func[])(va_list, t_options *));
 void	opts_init(t_options *opts);
-int		ft_atoi(const char *str, int *outdex);
+int		pf_atoi(const char *str, int *outdex);
 t_bool	is_flag(const char *format);
 size_t	ft_strlen(const char *str);
 

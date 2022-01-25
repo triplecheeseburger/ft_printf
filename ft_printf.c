@@ -48,11 +48,11 @@ int	f_proc(const char *format, int *index, va_list ap,
 	opdex = *index;
 	while (++opdex < conv && is_flag(&format[++(*index)]))
 		opts.flags[(int)format[*index]] = TRUE;
-	opts.width = ft_atoi(&format[*index], index);
+	opts.width = pf_atoi(&format[*index], index);
 	if (format[(*index)++] == '.')
 	{
 		opts.flags['.'] = TRUE;
-		opts.prec = ft_atoi(&format[*index], index);
+		opts.prec = pf_atoi(&format[*index], index);
 	}
 	if (opts.flags['0'] == TRUE && opts.prec == FALSE)
 		opts.padd = '0';

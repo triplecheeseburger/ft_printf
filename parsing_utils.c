@@ -57,7 +57,7 @@ size_t	ft_strlen(const char *str)
 	return (count);
 }
 
-int	ft_atoi(const char *str, int *outdex)
+int	pf_atoi(const char *str, int *outdex)
 {
 	unsigned long long	result;
 	int					plma;
